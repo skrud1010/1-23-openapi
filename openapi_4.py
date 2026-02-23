@@ -9,11 +9,14 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from io import BytesIO
 from datetime import datetime, timedelta
+import streamlit as st
+from openai import OpenAI
+
 
 # 1. 환경 설정
 load_dotenv()
 EXCHANGE_KEY = os.getenv("EXCHANGE_RATE_KEY")
-OPENAI_KEY = os.getenv("open_api_key")
+OPENAI_KEY = st.secrets["OPENAI_KEY"]
 client = OpenAI(api_key=OPENAI_KEY)
 
 # --- [서류 생성 엔진] 각 서류 양식에 맞게 표 구조 변경 ---
